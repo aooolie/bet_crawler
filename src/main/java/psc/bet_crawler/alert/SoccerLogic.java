@@ -1,5 +1,3 @@
-package psc.bet_crawler.alert;
-
 public class SoccerLogic {
    String name;
    String ownership;
@@ -7,41 +5,41 @@ public class SoccerLogic {
    double asiaindex;
    double stage;
    double odds;
-   // SoccerLogic ��Ĺ�����
+   // SoccerLogic 类的构造器
    public SoccerLogic(String name){
       this.name = name;
    }
-   // ����ownership��ֵ
+   // 设置ownership的值
    public void soccerOwnership(String soccerOwnership){
 	  ownership =  soccerOwnership;
    }
-   /* ����Score��ֵ*/
+   /* 设置Score的值*/
    public int soccerScore(int soccerScore){
 	  score = soccerScore;
 	  return score;
    }
-   /* ������ָָ��Aisaindex��ֵ*/
+   /* 设置亚指指数Aisaindex的值*/
    public double soccerAsiaIndex(double soccerAsiaIndex){
 	  asiaindex = soccerAsiaIndex;
 	  return asiaindex;
    }
-   /* ���ô�Сָ��ˮλstage��ֵ*/
+   /* 设置大小指数水位stage的值*/
    public double soccerStage(double soccerStage){
       stage = soccerStage;
       return stage;
    }
-   /* ���ô�Сָ������Odds��ֵ*/
+   /* 设置大小指数赔率Odds的值*/
    public double soccerOdds(double soccerOdds){
 	  odds = soccerOdds;
 	  return odds;
    }
-   /* ��ӡ��Ϣ */
+   /* 打印信息 */
    public void printSoccerLogic(){
-      System.out.println("�������:"+ name );
-      System.out.println("��ӹ���:" + ownership );
-      System.out.println("��Ӽ�ʱ�ȷ�:" + score );
-      System.out.println("��ָ��С:" + asiaindex );
-      System.out.println("��Сָˮλ:" + stage);
-      System.out.println("��Сָ����:" + odds);
+      System.out.println("球队名字:"+ name );
+      System.out.println("球队归属:" + ownership );
+      System.out.println("球队即时比分:" + score );
+      System.out.println("亚指大小:" + asiaindex );
+      System.out.println("大小指水位:" + stage);
+      System.out.println("大小指赔率:" + odds);
    }
 }

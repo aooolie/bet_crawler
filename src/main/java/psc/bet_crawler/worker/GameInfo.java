@@ -8,6 +8,8 @@ public class GameInfo {
     public String[] asianIndex;
     public String[] goalEstimate;
     public String[] waterMark;
+    public Long start;
+    public String urlIndex;
 
     @Override
     public String toString() {
@@ -23,6 +25,6 @@ public class GameInfo {
         for (String w : waterMark) {
             water += (w + " ");
         }
-        return "home: " + home + " guest: " + guest + " homeGoal: " + homeGoal + " guestGoal: " + guestGoal + " asian: " + asian + " estimate: " + estimate + " water: " + water;
+        return "home: " + home + " guest: " + guest + " homeGoal: " + homeGoal + " guestGoal: " + guestGoal + " asian: " + asian + " estimate: " + estimate + " water: " + water + " start: " + start + " urlIndex: " + urlIndex;
     }
 }

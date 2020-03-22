@@ -1,3 +1,5 @@
+package psc.bet_crawler.alert;
+
 public class SoccerLogic {
    String name;
    String ownership;
@@ -5,41 +7,41 @@ public class SoccerLogic {
    double asiaindex;
    double stage;
    double odds;
-   // SoccerLogic ÀàµÄ¹¹ÔìÆ÷
+   // SoccerLogic ï¿½ï¿½Ä¹ï¿½ï¿½ï¿½ï¿½ï¿½
    public SoccerLogic(String name){
       this.name = name;
    }
-   // ÉèÖÃownershipµÄÖµ
+   // ï¿½ï¿½ï¿½ï¿½ownershipï¿½ï¿½Öµ
    public void soccerOwnership(String soccerOwnership){
 	  ownership =  soccerOwnership;
    }
-   /* ÉèÖÃScoreµÄÖµ*/
+   /* ï¿½ï¿½ï¿½ï¿½Scoreï¿½ï¿½Öµ*/
    public int soccerScore(int soccerScore){
 	  score = soccerScore;
 	  return score;
    }
-   /* ÉèÖÃÑÇÖ¸Ö¸ÊýAisaindexµÄÖµ*/
+   /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸Ö¸ï¿½ï¿½Aisaindexï¿½ï¿½Öµ*/
    public double soccerAsiaIndex(double soccerAsiaIndex){
 	  asiaindex = soccerAsiaIndex;
 	  return asiaindex;
    }
-   /* ÉèÖÃ´óÐ¡Ö¸ÊýË®Î»stageµÄÖµ*/
+   /* ï¿½ï¿½ï¿½Ã´ï¿½Ð¡Ö¸ï¿½ï¿½Ë®Î»stageï¿½ï¿½Öµ*/
    public double soccerStage(double soccerStage){
       stage = soccerStage;
       return stage;
    }
-   /* ÉèÖÃ´óÐ¡Ö¸ÊýÅâÂÊOddsµÄÖµ*/
+   /* ï¿½ï¿½ï¿½Ã´ï¿½Ð¡Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Oddsï¿½ï¿½Öµ*/
    public double soccerOdds(double soccerOdds){
 	  odds = soccerOdds;
 	  return odds;
    }
-   /* ´òÓ¡ÐÅÏ¢ */
+   /* ï¿½ï¿½Ó¡ï¿½ï¿½Ï¢ */
    public void printSoccerLogic(){
-      System.out.println("Çò¶ÓÃû×Ö:"+ name );
-      System.out.println("Çò¶Ó¹éÊô:" + ownership );
-      System.out.println("Çò¶Ó¼´Ê±±È·Ö:" + score );
-      System.out.println("ÑÇÖ¸´óÐ¡:" + asiaindex );
-      System.out.println("´óÐ¡Ö¸Ë®Î»:" + stage);
-      System.out.println("´óÐ¡Ö¸ÅâÂÊ:" + odds);
+      System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:"+ name );
+      System.out.println("ï¿½ï¿½Ó¹ï¿½ï¿½ï¿½:" + ownership );
+      System.out.println("ï¿½ï¿½Ó¼ï¿½Ê±ï¿½È·ï¿½:" + score );
+      System.out.println("ï¿½ï¿½Ö¸ï¿½ï¿½Ð¡:" + asiaindex );
+      System.out.println("ï¿½ï¿½Ð¡Ö¸Ë®Î»:" + stage);
+      System.out.println("ï¿½ï¿½Ð¡Ö¸ï¿½ï¿½ï¿½ï¿½:" + odds);
    }
 }

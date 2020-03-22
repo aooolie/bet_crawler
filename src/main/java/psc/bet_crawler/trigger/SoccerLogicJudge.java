@@ -12,9 +12,9 @@ public class SoccerLogicJudge {
         if (info.asianIndex == null || info.waterMark == null || info.goalEstimate == null) {
             return false;
         }
-        int asianIndex = Integer.parseInt(info.asianIndex[info.asianIndex.length - 1]);
-        int waterMark = Integer.parseInt(info.waterMark[info.waterMark.length - 1]);
-        int goalEstimate = Integer.parseInt(info.goalEstimate[info.goalEstimate.length - 1]);
+        Double asianIndex = Double.valueOf(info.asianIndex[info.asianIndex.length - 1]);
+        Double waterMark = Double.valueOf(info.waterMark[info.waterMark.length - 1]);
+        Double goalEstimate = Double.valueOf(info.goalEstimate[info.goalEstimate.length - 1]);
 
         if (asianIndex > 0) {
             if (info.homeGoal == 0 && info.guestGoal == 2) {

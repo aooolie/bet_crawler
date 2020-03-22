@@ -1,4 +1,4 @@
-package psc.bet_crawler.alert;
+package psc.bet_crawler.trigger;
 
 import psc.bet_crawler.worker.GameInfo;
 

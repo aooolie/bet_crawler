@@ -1,13 +1,33 @@
 package psc.bet_crawler.worker;
 
+
+import net.sf.json.JSONObject;
+import org.apache.http.Header;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.HttpClient;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.CoreConnectionPNames;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.Charset;
+
+import org.apache.http.client.methods.HttpPost;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import psc.bet_crawler.service.GameService;
+
+import static org.springframework.http.HttpHeaders.USER_AGENT;
 
 public class HttpUtils {
+
+    Logger log = LoggerFactory.getLogger(HttpUtils.class);
 
     public static String interfaceUtil(String path, String data) {
         try {
@@ -72,4 +92,79 @@ public class HttpUtils {
         }
         return null;
     }
+
+    public static boolean httpPostWithJson(String jsonObj, String url) {
+        boolean isSuccess = false;
+
+        HttpPost post = null;
+        try {
+            HttpClient httpClient = new DefaultHttpClient();
+
+            // 设置超时时间
+            httpClient.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 2000);
+            httpClient.getParams().setParameter(CoreConnectionPNames.SO_TIMEOUT, 2000);
+
+            post = new HttpPost(url);
+            // 构造消息头
+            post.setHeader("Content-type", "application/json");
+
+            // 构建消息实体
+            StringEntity entity = new StringEntity(jsonObj, Charset.forName("UTF-8"));
+            entity.setContentEncoding("UTF-8");
+            // 发送Json格式的数据请求
+            entity.setContentType("application/json");
+            post.setEntity(entity);
+
+            HttpResponse response = httpClient.execute(post);
+
+            // 检验返回码
+            int statusCode = response.getStatusLine().getStatusCode();
+            if (statusCode != HttpStatus.SC_OK) {
+                isSuccess = false;
+            } else {
+                int retCode = 0;
+                String sessendId = "";
+                // 返回码中包含retCode及会话Id
+                for (Header header : response.getAllHeaders()) {
+                    if (header.getName().equals("retcode")) {
+                        retCode = Integer.parseInt(header.getValue());
+                    }
+                    if (header.getName().equals("SessionId")) {
+                        sessendId = header.getValue();
+                    }
+                }
+
+                if (200 != retCode) {
+                    // 日志打印
+                    isSuccess = false;
+                } else {
+                    isSuccess = true;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            isSuccess = false;
+        } finally {
+            if (post != null) {
+                try {
+                    post.releaseConnection();
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return isSuccess;
+    }
+
+    public static boolean pushDingDing(GameInfo info) {
+        String msg = "{\"msgtype\": \"text\", \n" +
+                "        \"text\": {\n" +
+                "             \"content\": \"比赛信息\n" + info +
+                "        }\n" +
+                "      }";
+        String url = "https://oapi.dingtalk.com/robot/send?access_token=f59fda033ef0d4c0cd85a2e9611a4a5752c07f3959f0ff2755716d7c800b0d3c";
+        return httpPostWithJson(msg, url);
+    }
+
 }

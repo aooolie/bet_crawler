@@ -42,6 +42,7 @@ public class Scheduler {
         for (GameInfo g : service.focusGameInfos) {
             log.info("[FocusScheduler] game: {}", g);
         }
+
     }
 
 }

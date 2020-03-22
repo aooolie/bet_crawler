@@ -1,4 +1,4 @@
-package psc.bet_crawler.alert;
+package psc.bet_crawler.trigger;
 
 public class SoccerLogic {
    String name;

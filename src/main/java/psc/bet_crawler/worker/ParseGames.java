@@ -23,7 +23,7 @@ public class ParseGames {
         Matcher m = r.matcher(html);
 
         while (m.find()) {
-            System.out.println("http://m.win007.com/Analy/ShiJian/" + m.group(0) + ".htm");
+//            System.out.println("http://m.win007.com/Analy/ShiJian/" + m.group(0) + ".htm");
 
             url.add(m.group(0));
         }

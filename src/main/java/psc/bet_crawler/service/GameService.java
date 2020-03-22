@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import psc.bet_crawler.worker.GameInfo;
 import psc.bet_crawler.worker.ParseDetail;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import static psc.bet_crawler.worker.HttpUtils.interfaceUtil;
@@ -14,17 +15,18 @@ import static psc.bet_crawler.worker.HttpUtils.interfaceUtil;
 public class GameService {
     Logger log = LoggerFactory.getLogger(GameService.class);
 
-    public Set<String> totalUrl;
+    public Set<String> totalUrl = new HashSet<>();
 
-    public Set<GameInfo> gameInfos;
+    public Set<GameInfo> gameInfos = new HashSet<>();
 
-    public Set<GameInfo> focusGameInfos;
+    public Set<GameInfo> focusGameInfos = new HashSet<>();
 
     //取出所有的GameInfo
     public void transformUrl2GameInfo() {
+        String url = "";
         try {
             for (String index : totalUrl) {
-                String url = "http://m.win007.com/analy/shijian/" + index + ".htm";
+                url = "http://m.win007.com/analy/shijian/" + index + ".htm";
                 String html = interfaceUtil(url, "");//get请求
                 GameInfo info = new GameInfo();
 
@@ -35,7 +37,7 @@ public class GameService {
                 gameInfos.add(info);
             }
         } catch (Exception e) {
-            log.error("==========> " + e.getCause());
+            log.error("[GameService] bad url: {}", url);
         }
     }
 
@@ -59,6 +61,7 @@ public class GameService {
 
             ParseDetail.getAllIndex(html, game.urlIndex, game);
             ParseDetail.getScore(html, game);
+
         }
     }
 }

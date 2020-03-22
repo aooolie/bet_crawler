@@ -5,25 +5,34 @@ public class GameInfo {
     public String guest;
     public int homeGoal;
     public int guestGoal;
+
+    //指数可能为null
     public String[] asianIndex;
     public String[] goalEstimate;
     public String[] waterMark;
+
     public Long start;
     public String urlIndex;
 
     @Override
     public String toString() {
         String asian = "";
-        for (String a : asianIndex) {
-            asian += (a + " ");
+        if (asianIndex != null) {
+            for (String a : asianIndex) {
+                asian += (a + " ");
+            }
         }
         String estimate = "";
-        for (String e : goalEstimate) {
-            estimate += (e + " ");
+        if (goalEstimate != null) {
+            for (String e : goalEstimate) {
+                estimate += (e + " ");
+            }
         }
         String water = "";
-        for (String w : waterMark) {
-            water += (w + " ");
+        if (waterMark != null) {
+            for (String w : waterMark) {
+                water += (w + " ");
+            }
         }
         return "home: " + home + " guest: " + guest + " homeGoal: " + homeGoal + " guestGoal: " + guestGoal + " asian: " + asian + " estimate: " + estimate + " water: " + water + " start: " + start + " urlIndex: " + urlIndex;
     }

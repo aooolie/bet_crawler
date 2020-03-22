@@ -1,3 +1,5 @@
+package psc.bet_crawler.alert;
+
 public class SoccerLogic {
    String name;
    String ownership;

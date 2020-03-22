@@ -160,11 +160,15 @@ public class HttpUtils {
     public static boolean pushDingDing(GameInfo info) {
         String msg = "{\"msgtype\": \"text\", \n" +
                 "        \"text\": {\n" +
-                "             \"content\": \"比赛信息\n" + info +
+                "             \"content\": \"比赛信息,\n" + info + "\"" +
                 "        }\n" +
                 "      }";
         String url = "https://oapi.dingtalk.com/robot/send?access_token=f59fda033ef0d4c0cd85a2e9611a4a5752c07f3959f0ff2755716d7c800b0d3c";
         return httpPostWithJson(msg, url);
+    }
+
+    public static void main(String[] args) {
+        pushDingDing(new GameInfo());
     }
 
 }

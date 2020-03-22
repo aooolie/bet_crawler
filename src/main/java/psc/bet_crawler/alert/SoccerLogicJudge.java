@@ -18,7 +18,7 @@ public class SoccerLogicJudge {
         if (team.asianIndex[] > 0) {
             if (team.homeGoal == 0 && team.guestGoal == 2) {
                 System.out.println("强队 VS 弱队 比分0:2");
-                if (team.waterMark[] == 2.5 && team.waterMark[] >= 0.6) {
+                if (team.waterMark[] == 2.5 && team.goalEstimate[] >= 0.6) {
                     return true;
                 } else {
                     System.out.println("不推送消息");

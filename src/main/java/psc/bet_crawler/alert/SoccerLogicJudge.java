@@ -5,37 +5,32 @@ import psc.bet_crawler.worker.GameInfo;
 public class SoccerLogicJudge {
     public static boolean judge(GameInfo info) {
 
-        SoccerLogic teamOne = new SoccerLogic("中国");
-        SoccerLogic teamTwo = new SoccerLogic("巴西");
+		GameInfo team = new GameInfo();
 
-        teamOne.soccerOwnership("主队");
-        teamOne.soccerScore(8);
-        teamOne.soccerAsiaIndex(-1);
-        teamOne.soccerStage(2.5);
-        teamOne.soccerOdds(0.6);
+        team.home;
+        team.guest;
+        team.homeGoal;
+        team.guestGoal;
+        team.asianIndex[];
+        team.goalEstimate[];
+        team.waterMark[];
 
-        teamTwo.soccerOwnership("客队");
-        teamTwo.soccerScore(0);
-        teamTwo.soccerAsiaIndex(-1);
-        teamTwo.soccerStage(2.5);
-        teamTwo.soccerOdds(0.6);
-
-        if (teamOne.soccerAsiaIndex(1) > 0) {
-            if (teamOne.soccerScore(2) == 2 && teamTwo.soccerScore(0) == 0) {
-                System.out.println("比分2:0");
-                if (teamOne.soccerStage(2.5) == 2.5 && teamOne.soccerOdds(0.6) >= 0.6) {
-                    System.out.println("水位2.5，大小指赔率:" + teamOne.soccerOdds(0.6));
-                    System.out.println("请关注比赛：" + teamOne.name + teamTwo.name);
-                    teamOne.printSoccerLogic();
+        if (team.asianIndex[] > 0) {
+            if (team.homeGoal == 0 && team.guestGoal == 2) {
+                System.out.println("强队 VS 弱队 比分0:2");
+                if (team.waterMark[] == 2.5 && team.waterMark[] >= 0.6) {
+                    return true;
                 } else {
-                    System.out.println("不推送消息" + teamOne.soccerOdds(0.6));
+                    System.out.println("不推送消息");
+					return false;
                 }
-
             } else {
                 System.out.println("比分不是2:0，不推送消息");
+				return false;
             }
         } else {
-            System.out.println("强队主场");
+            System.out.println("强队主场领先，不推送消息");
+			return false;
         }
         return false;
     }

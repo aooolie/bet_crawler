@@ -43,10 +43,10 @@ public class Scheduler {
         service.updateGameInfo();
         for (GameInfo g : service.focusGameInfos) {
             log.info("[FocusScheduler] game: {}", g);
-//            if (SoccerLogicJudge.judge(g)) {
-//                HttpUtils.pushDingDing(g);
-//            }
-            HttpUtils.pushDingDing(g);
+            if (SoccerLogicJudge.judge(g)) {
+                HttpUtils.pushDingDing(g);
+            }
+            HttpUtils.pushDingDingTest(g);
 
         }
 

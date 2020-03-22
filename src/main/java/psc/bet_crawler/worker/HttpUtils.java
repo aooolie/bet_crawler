@@ -167,8 +167,14 @@ public class HttpUtils {
         return httpPostWithJson(msg, url);
     }
 
-    public static void main(String[] args) {
-        pushDingDing(new GameInfo());
+    public static boolean pushDingDingTest(GameInfo info) {
+        String msg = "{\"msgtype\": \"text\", \n" +
+                "        \"text\": {\n" +
+                "             \"content\": \"比赛信息,\n" + info + "\"" +
+                "        }\n" +
+                "      }";
+        String url = "https://oapi.dingtalk.com/robot/send?access_token=c8d8b993f2dce091d5e18881c3281e798ed9ac5b39c2e069b82569879f08429a";
+        return httpPostWithJson(msg, url);
     }
 
 }

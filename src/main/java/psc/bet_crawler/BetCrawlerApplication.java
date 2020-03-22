@@ -12,7 +12,7 @@ import psc.bet_crawler.service.GameService;
 public class BetCrawlerApplication {
 
     public static void main(String[] args) {
-        Logger log = LoggerFactory.getLogger(GameService.class);
+        Logger log = LoggerFactory.getLogger(BetCrawlerApplication.class);
         SpringApplication.run(BetCrawlerApplication.class, args);
         log.info("Success.");
     }

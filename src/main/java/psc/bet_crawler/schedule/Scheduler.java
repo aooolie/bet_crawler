@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import psc.bet_crawler.service.GameService;
+import psc.bet_crawler.trigger.SoccerLogicJudge;
 import psc.bet_crawler.worker.GameInfo;
+import psc.bet_crawler.worker.HttpUtils;
 import psc.bet_crawler.worker.ParseDetail;
 import psc.bet_crawler.worker.ParseGames;
 
@@ -41,6 +43,9 @@ public class Scheduler {
         service.updateGameInfo();
         for (GameInfo g : service.focusGameInfos) {
             log.info("[FocusScheduler] game: {}", g);
+            if (SoccerLogicJudge.judge(g)) {
+                HttpUtils.pushDingDing(g);
+            }
         }
 
     }

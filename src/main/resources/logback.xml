@@ -20,7 +20,7 @@
             <fileNamePattern>/root/work/out.%d{yyyy-MM-dd}.log</fileNamePattern>
             <totalSizeCap>3GB</totalSizeCap>
             <maxHistory>30</maxHistory>
-            <MaxFileSize>10MB</MaxFileSize>
+            <!--<MaxFileSize>10MB</MaxFileSize>-->
         </rollingPolicy>
         　　　　　　　　　　　　
         <encoder>

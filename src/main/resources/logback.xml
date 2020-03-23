@@ -1,0 +1,43 @@
+<configuration>
+
+    　　　　　　
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        　　　　　　
+        <encoder>
+            　　　　　　　　
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>
+            　　　　　　
+        </encoder>
+        　　　　　　
+    </appender>
+
+
+    　　　　　　
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        　　　　　　　　　　　　
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            　　　　　　　　　　　　　　
+            <fileNamePattern>/root/work/out.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <totalSizeCap>3GB</totalSizeCap>
+            <maxHistory>30</maxHistory>
+            <MaxFileSize>10MB</MaxFileSize>
+        </rollingPolicy>
+        　　　　　　　　　　　　
+        <encoder>
+            　　　　　　　　　　　　　　
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+            　　　　　　　　　　　　
+        </encoder>
+        　　　　　　　　　　
+    </appender>
+
+
+    　　　　　　
+    <root level="INFO">
+        　　　　　　
+        <appender-ref ref="FILE"/>
+        　　　　
+        <!--<appender-ref ref="STDOUT"/>-->
+
+    </root>
+</configuration>

@@ -27,14 +27,27 @@ public class Scheduler {
         log.info("[HourScheduler] Start hour schedule.");
 
         service.gameInfos.clear();
-        service.totalUrl = ParseGames.getGames();
+        service.totalUrl.addAll(ParseGames.getGamesSchedule());
+        service.totalUrl.addAll(ParseGames.getGamesFromImmediate());
         service.transformUrl2GameInfo();
         for (GameInfo g : service.gameInfos) {
             log.info("[HourScheduler] game: {}", g);
         }
     }
 
-    @Scheduled(initialDelay = 10000, fixedDelay = 180000)
+    @Scheduled(initialDelay = 10000, fixedDelay = 1200000)
+//    @Scheduled(cron = "0 0/1 * * * ?")
+    public void getGameSchedule1() {
+        log.info("[1/4HourScheduler] Start hour schedule.");
+
+        service.totalUrl.addAll(ParseGames.getGamesFromImmediate());
+        service.transformUrl2GameInfo();
+        for (GameInfo g : service.gameInfos) {
+            log.info("[1/4HourScheduler] game: {}", g);
+        }
+    }
+
+    @Scheduled(initialDelay = 15000, fixedDelay = 180000)
     public void getGameInfoSchedule() {
         log.info("[FocusScheduler] Start focus schedule.");
 

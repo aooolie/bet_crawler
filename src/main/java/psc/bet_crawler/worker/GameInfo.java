@@ -1,5 +1,6 @@
 package psc.bet_crawler.worker;
 
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -17,7 +18,7 @@ public class GameInfo {
     public Long start;
     public String urlIndex;
 
-    public Set<String> hitRule;
+    public Set<String> hitRule = new HashSet<>();
 
     @Override
     public String toString() {
@@ -43,7 +44,7 @@ public class GameInfo {
         for (String h : hitRule) {
             hitRules += (h + "");
         }
-            return "Home: " + home + " Guest: " + guest + " HomeGoal: " + homeGoal + " GuestGoal: " + guestGoal + " Asian: " + asian + " Estimate: " + estimate + " Water: " + water + " UrlIndex: " + urlIndex + " HitRule: " + hitRules;
+        return "Home: " + home + " Guest: " + guest + " HomeGoal: " + homeGoal + " GuestGoal: " + guestGoal + " Asian: " + asian + " Estimate: " + estimate + " Water: " + water + " UrlIndex: " + urlIndex + " HitRule: " + hitRules;
     }
 
 

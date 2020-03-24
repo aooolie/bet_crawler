@@ -1,5 +1,8 @@
 package psc.bet_crawler.worker;
 
+import java.util.Objects;
+import java.util.Set;
+
 public class GameInfo {
     public String home;
     public String guest;
@@ -13,6 +16,8 @@ public class GameInfo {
 
     public Long start;
     public String urlIndex;
+
+    public Set<String> hitRule;
 
     @Override
     public String toString() {
@@ -34,6 +39,31 @@ public class GameInfo {
                 water += (w + " ");
             }
         }
-        return "home: " + home + " guest: " + guest + " homeGoal: " + homeGoal + " guestGoal: " + guestGoal + " asian: " + asian + " estimate: " + estimate + " water: " + water + " start: " + start + " urlIndex: " + urlIndex;
+        String hitRules = "";
+        for (String h : hitRule) {
+            hitRules += (h + "");
+        }
+            return "Home: " + home + " Guest: " + guest + " HomeGoal: " + homeGoal + " GuestGoal: " + guestGoal + " Asian: " + asian + " Estimate: " + estimate + " Water: " + water + " UrlIndex: " + urlIndex + " HitRule: " + hitRules;
     }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof GameInfo)) return false;
+        GameInfo that = (GameInfo) o;
+        return this.home.equals(that.home)
+                && this.guest.equals(that.guest)
+                && this.urlIndex.equals(that.urlIndex)
+                && this.asianIndex.length == that.asianIndex.length
+                && this.goalEstimate.length == that.goalEstimate.length
+                && this.waterMark.length == that.waterMark.length;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(urlIndex);
+    }
+
+
 }

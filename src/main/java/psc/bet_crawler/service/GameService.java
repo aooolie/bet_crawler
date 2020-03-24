@@ -6,7 +6,9 @@ import org.springframework.stereotype.Service;
 import psc.bet_crawler.worker.GameInfo;
 import psc.bet_crawler.worker.ParseDetail;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import static psc.bet_crawler.worker.HttpUtils.interfaceUtil;
@@ -20,6 +22,8 @@ public class GameService {
     public Set<GameInfo> gameInfos = new HashSet<>();
 
     public Set<GameInfo> focusGameInfos = new HashSet<>();
+
+    public Map<String, GameInfo> informedInfos = new HashMap<>();
 
     //取出所有的GameInfo
     public void transformUrl2GameInfo() {
@@ -64,4 +68,5 @@ public class GameService {
 
         }
     }
+
 }

@@ -21,6 +21,13 @@ public class Scheduler {
     @Autowired
     GameService service;
 
+    @Scheduled(cron = "0 15 0 * * ?")
+    public void updateInformedGameSchedule() {
+        log.info("[DayScheduler] update informedInfos schedule.");
+        service.informedInfos.clear();
+        log.info("[DayScheduler] update informedInfos schedule success.");
+    }
+
     @Scheduled(initialDelay = 5000, fixedDelay = 3600000)
 //    @Scheduled(cron = "0 0/1 * * * ?")
     public void getGameSchedule() {
@@ -33,6 +40,7 @@ public class Scheduler {
         for (GameInfo g : service.gameInfos) {
             log.info("[HourScheduler] game: {}", g);
         }
+        log.info("[HourScheduler] Hour schedule success.");
     }
 
     @Scheduled(initialDelay = 10000, fixedDelay = 1200000)
@@ -45,6 +53,8 @@ public class Scheduler {
         for (GameInfo g : service.gameInfos) {
             log.info("[1/4HourScheduler] game: {}", g);
         }
+        log.info("[1/4HourScheduler] Hour schedule success.");
+
     }
 
     @Scheduled(initialDelay = 15000, fixedDelay = 180000)
@@ -56,13 +66,37 @@ public class Scheduler {
         service.updateGameInfo();
         for (GameInfo g : service.focusGameInfos) {
             log.info("[FocusScheduler] game: {}", g);
-            if (SoccerLogicJudge.judge(g)) {
+            boolean trigger = false;
+            if (!service.informedInfos.containsKey(g.urlIndex)) {
+                log.info("[FocusScheduler] first trigger game: {}", g);
+                trigger = ruleJudge(g);
+
+            } else {
+                if(!service.informedInfos.get(g.urlIndex).equals(g)) {
+                    log.info("[FocusScheduler] update trigger game: {}", g);
+                    trigger = ruleJudge(g);
+                }
+            }
+            if (trigger) {
                 HttpUtils.pushDingDing(g);
             }
             HttpUtils.pushDingDingTest(g);
 
         }
 
+        log.info("[FocusScheduler] Focus schedule success.");
+
     }
 
+    public boolean ruleJudge(GameInfo g) {
+        boolean trigger = false;
+
+        //规则1
+        if (SoccerLogicJudge.judge(g)) {
+            g.hitRule.add("规则1");
+            trigger = true;
+        }
+
+        return trigger;
+    }
 }

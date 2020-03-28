@@ -19,7 +19,7 @@ public class SoccerLogicJudge {
         if (asianIndex > 0) {
             if (info.guestGoal - info.homeGoal == 2) {
                 log.info("强队 VS 弱队 分差2分: {}", info);
-                if (waterMark >= (info.guestGoal + info.homeGoal + 0.5)  && goalEstimate >= 0.6) {
+                if ((waterMark >= (info.guestGoal + info.homeGoal + 0.5)) && (goalEstimate >= 0.6)) {
                     return true;
                 } else {
                     log.info("不推送消息: {}", info);

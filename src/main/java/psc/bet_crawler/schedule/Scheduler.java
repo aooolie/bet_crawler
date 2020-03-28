@@ -70,17 +70,23 @@ public class Scheduler {
             if (!service.informedInfos.containsKey(g.urlIndex)) {
                 log.info("[FocusScheduler] first trigger game: {}", g);
                 trigger = ruleJudge(g);
-
+                // 发到测试群
+                HttpUtils.pushDingDingTest(g);
             } else {
                 if(!service.informedInfos.get(g.urlIndex).equals(g)) {
                     log.info("[FocusScheduler] update trigger game: {}", g);
                     trigger = ruleJudge(g);
+                    //发到测试群
+                    HttpUtils.pushDingDingTest(g);
                 }
             }
+
+            service.informedInfos.put(g.urlIndex, g);
+
             if (trigger) {
                 HttpUtils.pushDingDing(g);
             }
-            HttpUtils.pushDingDingTest(g);
+            HttpUtils.pushDingDingHeartbeat(g);
 
         }
 

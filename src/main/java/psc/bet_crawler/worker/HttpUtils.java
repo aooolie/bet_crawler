@@ -17,6 +17,8 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.apache.http.client.methods.HttpPost;
 import org.slf4j.Logger;
@@ -171,6 +173,20 @@ public class HttpUtils {
         String msg = "{\"msgtype\": \"text\", \n" +
                 "        \"text\": {\n" +
                 "             \"content\": \"比赛信息,\n" + info + "\"" +
+                "        }\n" +
+                "      }";
+        String url = "https://oapi.dingtalk.com/robot/send?access_token=c8d8b993f2dce091d5e18881c3281e798ed9ac5b39c2e069b82569879f08429a";
+        return httpPostWithJson(msg, url);
+    }
+
+    public static boolean pushDingDingHeartbeat(GameInfo info) {
+
+        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+        Date date = new Date(System.currentTimeMillis());
+        String time = formatter.format(date);
+        String msg = "{\"msgtype\": \"text\", \n" +
+                "        \"text\": {\n" +
+                "             \"content\": \"比赛信息,发送心跳 --- " + time + "\"" +
                 "        }\n" +
                 "      }";
         String url = "https://oapi.dingtalk.com/robot/send?access_token=c8d8b993f2dce091d5e18881c3281e798ed9ac5b39c2e069b82569879f08429a";

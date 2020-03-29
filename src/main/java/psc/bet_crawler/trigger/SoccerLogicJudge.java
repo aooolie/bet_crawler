@@ -5,9 +5,24 @@ import org.slf4j.LoggerFactory;
 import psc.bet_crawler.service.GameService;
 import psc.bet_crawler.worker.GameInfo;
 
+import java.util.ArrayList;
+
 public class SoccerLogicJudge {
     public static Logger log = LoggerFactory.getLogger(SoccerLogicJudge.class);
 
+    public static void main(String[] args) {
+        GameInfo g = new GameInfo();
+        g.asianIndex = new ArrayList<>();
+        g.goalEstimate = new ArrayList<>();
+        g.waterMark = new ArrayList<>();
+
+        g.home = "nm";
+        g.guest = "mm";
+        g.homeGoal = 0;
+        g.guestGoal = 2;
+
+        judge(g);
+    }
     public static boolean judge(GameInfo info) {
         if (info.asianIndex.size() == 0 || info.waterMark.size() == 0 || info.goalEstimate.size() == 0) {
             return false;

@@ -179,7 +179,7 @@ public class HttpUtils {
         return httpPostWithJson(msg, url);
     }
 
-    public static boolean pushDingDingHeartbeat(GameInfo info) {
+    public static boolean pushDingDingHeartbeat() {
 
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
         Date date = new Date(System.currentTimeMillis());

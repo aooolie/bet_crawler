@@ -86,9 +86,9 @@ public class Scheduler {
             if (trigger) {
                 HttpUtils.pushDingDing(g);
             }
-            HttpUtils.pushDingDingHeartbeat(g);
-
         }
+
+        HttpUtils.pushDingDingHeartbeat();
 
         log.info("[FocusScheduler] Focus schedule success.");
 

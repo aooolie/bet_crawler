@@ -1,6 +1,7 @@
 package psc.bet_crawler.worker;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -11,9 +12,9 @@ public class GameInfo {
     public int guestGoal;
 
     //指数可能为null
-    public String[] asianIndex;
-    public String[] goalEstimate;
-    public String[] waterMark;
+    public List<String> asianIndex;
+    public List<String> goalEstimate;
+    public List<String> waterMark;
 
     public Long start;
     public String urlIndex;
@@ -56,9 +57,9 @@ public class GameInfo {
         return this.home.equals(that.home)
                 && this.guest.equals(that.guest)
                 && this.urlIndex.equals(that.urlIndex)
-                && this.asianIndex.length == that.asianIndex.length
-                && this.goalEstimate.length == that.goalEstimate.length
-                && this.waterMark.length == that.waterMark.length;
+                && this.asianIndex.size() == that.asianIndex.size()
+                && this.goalEstimate.size() == that.goalEstimate.size()
+                && this.waterMark.size() == that.waterMark.size();
     }
 
     @Override

@@ -104,7 +104,7 @@ public class ParseDetail {
     /**
      * 获取亚指
      */
-    public static String[] getAsianIndex(String index) {
+    public static List<String> getAsianIndex(String index) {
 
         List<String> res = new ArrayList<>();
         String[] totalIndex = index.split(",");
@@ -114,13 +114,13 @@ public class ParseDetail {
                 res.add(colIndexes[6]);
             }
         }
-        return res.toArray(new String[res.size()]);
+        return res;
     }
 
     /**
      * 获取即
      */
-    public static String[] getGoalEstimate(String index) {
+    public static List<String> getGoalEstimate(String index) {
 
         List<String> res = new ArrayList<>();
         String[] totalIndex = index.split(",");
@@ -130,13 +130,13 @@ public class ParseDetail {
                 res.add(colIndexes[9]);
             }
         }
-        return res.toArray(new String[res.size()]);
+        return res;
     }
 
     /**
      * 获取水位
      */
-    public static String[] getWaterMark(String index) {
+    public static List<String> getWaterMark(String index) {
 
         List<String> res = new ArrayList<>();
         String[] totalIndex = index.split(",");
@@ -146,6 +146,6 @@ public class ParseDetail {
                 res.add(colIndexes[10]);
             }
         }
-        return res.toArray(new String[res.size()]);
+        return res;
     }
 }

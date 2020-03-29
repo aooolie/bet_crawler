@@ -9,12 +9,12 @@ public class SoccerLogicJudge {
     public static Logger log = LoggerFactory.getLogger(SoccerLogicJudge.class);
 
     public static boolean judge(GameInfo info) {
-        if (info.asianIndex == null || info.waterMark == null || info.goalEstimate == null) {
+        if (info.asianIndex.size() == 0 || info.waterMark.size() == 0 || info.goalEstimate.size() == 0) {
             return false;
         }
-        Double asianIndex = Double.valueOf(info.asianIndex[info.asianIndex.length - 1]);
-        Double waterMark = Double.valueOf(info.waterMark[info.waterMark.length - 1]);
-        Double goalEstimate = Double.valueOf(info.goalEstimate[info.goalEstimate.length - 1]);
+        Double asianIndex = Double.valueOf(info.asianIndex.get(info.asianIndex.size() - 1));
+        Double waterMark = Double.valueOf(info.waterMark.get(info.waterMark.size() - 1));
+        Double goalEstimate = Double.valueOf(info.goalEstimate.get(info.goalEstimate.size() - 1));
 
         if (asianIndex > 0) {
             if (info.guestGoal - info.homeGoal == 2) {

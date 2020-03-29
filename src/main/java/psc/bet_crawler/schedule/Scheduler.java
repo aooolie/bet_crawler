@@ -53,6 +53,7 @@ public class Scheduler {
         for (GameInfo g : service.gameInfos) {
             log.info("[1/4HourScheduler] game: {}", g);
         }
+        HttpUtils.pushDingDingHeartbeat();
         log.info("[1/4HourScheduler] Hour schedule success.");
 
     }
@@ -87,8 +88,6 @@ public class Scheduler {
                 HttpUtils.pushDingDing(g);
             }
         }
-
-        HttpUtils.pushDingDingHeartbeat();
 
         log.info("[FocusScheduler] Focus schedule success.");
 

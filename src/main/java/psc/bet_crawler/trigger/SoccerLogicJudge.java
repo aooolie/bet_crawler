@@ -24,6 +24,9 @@ public class SoccerLogicJudge {
         judge(g);
     }
     public static boolean judge(GameInfo info) {
+        if (info.asianIndex == null || info.waterMark == null || info.goalEstimate == null) {
+            return false;
+        }
         if (info.asianIndex.size() == 0 || info.waterMark.size() == 0 || info.goalEstimate.size() == 0) {
             return false;
         }

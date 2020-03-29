@@ -57,9 +57,21 @@ public class GameInfo {
         return this.home.equals(that.home)
                 && this.guest.equals(that.guest)
                 && this.urlIndex.equals(that.urlIndex)
-                && this.asianIndex.size() == that.asianIndex.size()
-                && this.goalEstimate.size() == that.goalEstimate.size()
-                && this.waterMark.size() == that.waterMark.size();
+                && this.homeGoal == that.homeGoal
+                && this.guestGoal == that.guestGoal
+                && isEquals(this.asianIndex, that.asianIndex)
+                && isEquals(this.goalEstimate, that.goalEstimate)
+                && isEquals(this.waterMark, that.waterMark);
+    }
+
+    public static boolean isEquals(List<String> list1, List<String> list2) {
+        if (null != list1 && null != list2) {
+            if (list1.containsAll(list2) && list2.containsAll(list1)) {
+                return true;
+            }
+            return false;
+        }
+        return true;
     }
 
     @Override

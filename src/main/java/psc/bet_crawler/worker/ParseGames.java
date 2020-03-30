@@ -34,6 +34,13 @@ public class ParseGames {
         return url;
     }
 
+    public static void main() {
+        Set<String> immediate = getGamesFromImmediate();
+        for (String s : immediate) {
+            System.out.println("======>" + s);
+        }
+    }
+
     /**
      * 从即时获取比赛信息
      */

@@ -43,22 +43,22 @@ public class Scheduler {
         log.info("[HourScheduler] Hour schedule success.");
     }
 
-    @Scheduled(initialDelay = 10000, fixedDelay = 1200000)
+    @Scheduled(initialDelay = 10000, fixedDelay = 600000)
 //    @Scheduled(cron = "0 0/1 * * * ?")
     public void getGameSchedule1() {
-        log.info("[1/4HourScheduler] Start hour schedule.");
+        log.info("[1/6HourScheduler] Start 1/6 hour schedule.");
 
         service.totalUrl.addAll(ParseGames.getGamesFromImmediate());
         service.transformUrl2GameInfo();
         for (GameInfo g : service.gameInfos) {
-            log.info("[1/4HourScheduler] game: {}", g);
+            log.info("[1/6HourScheduler] game: {}", g);
         }
         HttpUtils.pushDingDingHeartbeat();
-        log.info("[1/4HourScheduler] Hour schedule success.");
+        log.info("[1/6HourScheduler] 1/6 hour schedule success.");
 
     }
 
-    @Scheduled(initialDelay = 15000, fixedDelay = 180000)
+    @Scheduled(initialDelay = 15000, fixedDelay = 120000)
     public void getGameInfoSchedule() {
         log.info("[FocusScheduler] Start focus schedule.");
 

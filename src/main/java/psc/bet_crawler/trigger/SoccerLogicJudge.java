@@ -10,19 +10,6 @@ import java.util.ArrayList;
 public class SoccerLogicJudge {
     public static Logger log = LoggerFactory.getLogger(SoccerLogicJudge.class);
 
-    public static void main(String[] args) {
-        GameInfo g = new GameInfo();
-        g.asianIndex = new ArrayList<>();
-        g.goalEstimate = new ArrayList<>();
-        g.waterMark = new ArrayList<>();
-
-        g.home = "nm";
-        g.guest = "mm";
-        g.homeGoal = 0;
-        g.guestGoal = 2;
-
-        judge(g);
-    }
     public static boolean judge(GameInfo info) {
         if (info.asianIndex == null || info.waterMark == null || info.goalEstimate == null) {
             return false;
@@ -35,7 +22,9 @@ public class SoccerLogicJudge {
         Double goalEstimate = Double.valueOf(info.goalEstimate.get(info.goalEstimate.size() - 1));
 
         if (asianIndex > 0) {
-            if (info.guestGoal - info.homeGoal == 2) {
+
+            //TODO 修改触发规则
+            if (info.guestGoal - info.homeGoal >= 1) {
                 log.info("强队 VS 弱队 分差2分: {}", info);
                 if ((waterMark >= (info.guestGoal + info.homeGoal + 0.5)) && (goalEstimate >= 0.6)) {
                     return true;

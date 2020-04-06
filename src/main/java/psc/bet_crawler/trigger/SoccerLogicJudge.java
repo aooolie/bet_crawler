@@ -17,7 +17,7 @@ public class SoccerLogicJudge {
         if (info.asianIndex.size() == 0 || info.waterMark.size() == 0 || info.goalEstimate.size() == 0) {
             return false;
         }
-        Double asianIndex = Double.valueOf(info.asianIndex.get(info.asianIndex.size() - 1));
+        Double asianIndex = Double.valueOf(info.asianIndex.get(0));
         Double waterMark = Double.valueOf(info.waterMark.get(info.waterMark.size() - 1));
         Double goalEstimate = Double.valueOf(info.goalEstimate.get(info.goalEstimate.size() - 1));
 
